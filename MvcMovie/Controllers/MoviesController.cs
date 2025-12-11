@@ -20,28 +20,17 @@ namespace MvcMovie.Controllers
             _context = context;
         }
 
+        public string GetClientInfo(string username)
+        {
+            // BAD: User input 'username' is concatenated directly into the SQL query
+            string query = "SELECT * FROM Users WHERE Username = '" + username + "'";
+            // ... execution of the vulnerable query ...
+            return query;
+        }
+
         // GET: Movies
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-
-            //
-            string userInput = "1; DROP TABLE Users"; // Simulating user input  
-            string query = "SELECT * FROM Users WHERE Id = " + userInput;
-
-            using (SqlConnection connection = new SqlConnection("your_connection_string"))
-            {
-                SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader["Name"]);
-                }
-                reader.Close();
-            }
-            //
-
 
             if (_context.Movie == null)
             {
