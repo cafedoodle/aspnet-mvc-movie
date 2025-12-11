@@ -20,6 +20,23 @@ namespace MvcMovie.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult GetUserInfo(string moviename)
+        {
+            // BAD: User input 'username' is concatenated directly into the SQL query  
+            var query = "SELECT * FROM Movie WHERE Moviename = '" + moviename + "'";
+
+            // This will execute the raw SQL query using Entity Framework  
+            var movie = _context.Movie.FromSqlRaw(query).FirstOrDefault();
+
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
+        }
+
         //public string GetClientInfo(string username)
         //{
         //    // BAD: User input 'username' is concatenated directly into the SQL query
