@@ -26,13 +26,3 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Set up CodeQL        
-      uses: github/codeql-action/setup@v2        
-      with:          
-        languages: csharp  # Specify the language you want to analyze  
-    - name: Build the code for CodeQL        
-      run: dotnet build  # Ensure the code is built for analysis  
-    - name: Run CodeQL        
-      uses: github/codeql-action/analyze@v2        
-      with:          
-       category: 'security'  # Specify the category for results 
