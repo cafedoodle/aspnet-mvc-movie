@@ -37,6 +37,18 @@ namespace MvcMovie.Controllers
             return View(movie);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetUserInfo1(string username)
+        {
+            // This is a direct use of string concatenation (intentionally vulnerable)  
+            var user = await _context.Movie
+                .FromSqlRaw($"SELECT * FROM Users WHERE Username = '{username}'")
+                .FirstOrDefaultAsync();
+
+            return View(user);
+        }
+
+
         //public string GetClientInfo(string username)
         //{
         //    // BAD: User input 'username' is concatenated directly into the SQL query
