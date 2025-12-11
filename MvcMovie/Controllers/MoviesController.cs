@@ -20,43 +20,6 @@ namespace MvcMovie.Controllers
             _context = context;
         }
 
-        [HttpGet]
-        public IActionResult GetUserInfo(string moviename)
-        {
-            // BAD: User input 'username' is concatenated directly into the SQL query  
-            var query = "SELECT * FROM Movie WHERE Moviename = '" + moviename + "'";
-
-            // This will execute the raw SQL query using Entity Framework  
-            var movie = _context.Movie.FromSqlRaw(query).FirstOrDefault();
-
-            if (movie == null)
-            {
-                return NotFound();
-            }
-
-            return View(movie);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetUserInfo1(string username)
-        {
-            // This is a direct use of string concatenation (intentionally vulnerable)  
-            var user = await _context.Movie
-                .FromSqlRaw($"SELECT * FROM Users WHERE Username = '{username}'")
-                .FirstOrDefaultAsync();
-
-            return View(user);
-        }
-
-
-        //public string GetClientInfo(string username)
-        //{
-        //    // BAD: User input 'username' is concatenated directly into the SQL query
-        //    string query = "SELECT * FROM Users WHERE Username = '" + username + "'";
-        //    // ... execution of the vulnerable query ...
-        //    return query;
-        //}
-
         // GET: Movies
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
