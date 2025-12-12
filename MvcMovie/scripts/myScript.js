@@ -3,7 +3,20 @@
 // Function to display a greeting message  
 function displayGreeting() {
     alert("Hello! Welcome to our website."); //test
-}  
+}
+
+// WARNING: Vulnerable code for testing purposes
+function displayUserName() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name'); // Source of untrusted data
+
+    if (name) {
+        // Sink: innerHTML interprets the string as HTML, triggering a CodeQL XSS alert (CWE-079)
+        document.getElementById('greeting').innerHTML = 'Hello, ' + name;
+    }
+}
+// Example of how an attacker might use this:
+// https://example.com/page.html?name=<script>alert('XSS Attack!');</script>
 
 function displayDemo() {
     // Example of a JavaScript file with potential security issues  
@@ -22,6 +35,6 @@ $(document).ready(function () {
     //setupButtonClick();
     //fetchData();
 
-    
+
 
 });  
