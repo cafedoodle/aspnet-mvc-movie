@@ -13,6 +13,7 @@ function displayUserName() {
     if (name) {
         // Sink: innerHTML interprets the string as HTML, triggering a CodeQL XSS alert (CWE-079)
         document.getElementById('greeting').textContent = 'Hello, ' + name;
+        // Potential XSS vulnerability if 'name' contains malicious code
     }
 }
 // Example of how an attacker might use this:
