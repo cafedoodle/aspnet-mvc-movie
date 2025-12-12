@@ -21,8 +21,15 @@ function displayUserName() {
 
 
 $(document).ready(function () {
-    alert("This is a specific script for My Page!"); // Your custom JavaScript code  
+    alert("This is a specific script for My Page!"); // Your custom JavaScript code
     //displayGreeting();
     //setupButtonClick();
     //fetchData();
+
+    // Example of a JavaScript file with potential security issues  
+    const userInput = "2 + 2"; // This could be any user-controlled input  
+    const result = eval(userInput); // Using eval can lead to security vulnerabilities  
+
+    console.log("The result is: " + result);  
+
 });  
