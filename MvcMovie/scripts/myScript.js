@@ -2,7 +2,7 @@
 
 // Function to display a greeting message  
 function displayGreeting() {
-    alert("Hello! Welcome to our website.");
+    alert("Hello! Welcome to our website."); //test
 }  
 
 // WARNING: Vulnerable code for testing purposes
