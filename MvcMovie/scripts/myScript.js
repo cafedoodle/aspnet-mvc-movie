@@ -31,5 +31,6 @@ $(document).ready(function () {
     const result = eval(userInput); // Using eval can lead to security vulnerabilities  
 
     console.log("The result is: " + result);  
+    // Call the vulnerable function to demonstrate XSS
 
 });  
