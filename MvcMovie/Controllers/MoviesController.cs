@@ -25,6 +25,7 @@ namespace MvcMovie.Controllers
         {
             //test bug fix 1
             //test bug fix 2
+            //test bug fix 3
             if (_context.Movie == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
