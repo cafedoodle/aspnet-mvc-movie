@@ -33,6 +33,7 @@ function displayDemo() {
 }
 
 $(document).ready(function () {
+    //add feature 1
     alert("This is a specific script for My Page!"); // Your custom JavaScript code
     //displayGreeting();
     //setupButtonClick();
