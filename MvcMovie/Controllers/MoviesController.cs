@@ -23,7 +23,7 @@ namespace MvcMovie.Controllers
         // GET: Movies
         public async Task<IActionResult> Index(string movieGenre, string searchString)
         {
-
+            //test bug fix 1
             if (_context.Movie == null)
             {
                 return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
