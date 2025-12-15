@@ -36,6 +36,7 @@ $(document).ready(function () {
     //add feature 1
     //add feature 2
     //add feature 3
+    //add feature 4
     alert("This is a specific script for My Page!"); // Your custom JavaScript code
     //displayGreeting();
     //setupButtonClick();
