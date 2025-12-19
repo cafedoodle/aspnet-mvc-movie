@@ -19,25 +19,4 @@ public class HelloWorldController : Controller
         return View();
     }
 
-    //
-    // GET: User/GetUserData/{username}  
-    public ActionResult GetUserData(string username)
-    {
-        User user = GetUserByUsername(username); // This method can return null  
-        string userEmail = user.Email; // Potential Null Pointer Dereference  
-
-        return Content(userEmail ?? "User not found", "text/plain");
-    }
-
-    private User GetUserByUsername(string username)
-    {
-        // Simulating a user retrieval that might return null  
-        return null; // Simulating a case where user is not found  
-    }
-
-    public class User
-    {
-        public string Email { get; set; }
-    }
-    //
 }
