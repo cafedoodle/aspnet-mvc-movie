@@ -30,7 +30,7 @@ public class HelloWorldController : Controller
     private async Task<string> FetchUserDataAsync(string username)
     {
         // Hardcoded secret (API key)  
-        string apiKey = "12345-ABCDE-67890-FGHIJ";
+        string apiKey = "my_secret_api_key_12345";
 
         string url = $"https://api.example.com/users/{username}?api_key={apiKey}";
 
