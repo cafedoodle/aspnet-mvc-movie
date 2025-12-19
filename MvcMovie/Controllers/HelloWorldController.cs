@@ -21,32 +21,23 @@ public class HelloWorldController : Controller
 
     //
     // GET: User/GetUserData/{username}  
-    public async Task<ActionResult> GetUserData(string username)
+    public ActionResult GetUserData(string username)
     {
-        var userData = await FetchUserDataAsync(username);
-        return Content(userData, "application/json");
+        User user = GetUserByUsername(username); // This method can return null  
+        string userEmail = user.Email; // Potential Null Pointer Dereference  
+
+        return Content(userEmail ?? "User not found", "text/plain");
     }
 
-    private async Task<string> FetchUserDataAsync(string username)
+    private User GetUserByUsername(string username)
     {
-        // Hardcoded secret (API key)  
-        string apiKey = "my_secret_api_key_12345";
+        // Simulating a user retrieval that might return null  
+        return null; // Simulating a case where user is not found  
+    }
 
-        string url = $"https://api.example.com/users/{username}?api_key={apiKey}";
-
-        using (HttpClient client = new HttpClient())
-        {
-            HttpResponseMessage response = await client.GetAsync(url);
-            if (response.IsSuccessStatusCode)
-            {
-                return await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                return "{\"error\": \"User not found\"}";
-            }
-        }
+    public class User
+    {
+        public string Email { get; set; }
     }
     //
-
- }
+}
