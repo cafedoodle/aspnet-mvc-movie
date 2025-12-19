@@ -40,5 +40,4 @@ public class HelloWorldController : Controller
         public string Email { get; set; }
     }
     //
-
 }
